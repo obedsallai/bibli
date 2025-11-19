@@ -21,10 +21,14 @@ class Genrrre extends Component
         request()->session()->flash('success', 'Genre added successfully.');
     }
 
+    public function cancelGenre(){
+        $this->editingGenreId = null ;
+    }
+
     public function render()
 
     {
-        $genres = Genre::with('books')->get();
+        $genres = Genre::with('books')->paginate(7);
         return view('livewire.genrrre', [
             'genres'=> $genres
         ]);

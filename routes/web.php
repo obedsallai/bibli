@@ -17,17 +17,28 @@ use App\Livewire\Auth\Logout;
 use App\Livewire\Dashboard;
 use App\Livewire\EditLivre;
 use App\Livewire\EditUser;
+use App\Livewire\Auth\ForgotPassword;
+use App\Livewire\Auth\ResetPassword;
+
+
 
 
 
 Route::get('/login', Login::class)->name('login');
 Route::get('/register', Register::class)->name('register');
+Route::get('/mot-de-passe-oublie', ForgotPassword::class)->name('password.request');
+
 
 
 
 
 Route::middleware('auth')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('dashboard');
+    Route::get('/reinitialiser-mot-de-passe/{token}', ResetPassword::class)->name('password.reset');
+
+
+
+
     
     Route::resource('membres', UserController::class);
 

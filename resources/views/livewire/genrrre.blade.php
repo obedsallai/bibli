@@ -15,7 +15,7 @@
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
                     </svg>
-                </button>
+                </button>   
                 <span class="text-white">{{ session('success') }}</span>
             </div>
             
@@ -70,10 +70,11 @@
 
                 <ul class="list-group">
             @foreach($genres as $genre)
+
                 <li class="list-group-item d-flex justify-content-between align-items-center">
             @if ($editingGenreId == $genre->id )
 
-                <input type="text" wire:model.defer='genre_nom' class=" w-1/3 form-control @error('genre_nom') is-invalid @enderror" value="{{  $genre->name }}" placeholder="{{ $genre->name }}" >
+                <input type="text" wire:model.defer='genre_nom' class=" w-1/3 form-control @error('genre_nom') is-invalid @enderror" value="{{  $genre->name }}"  >
             @else
                 <div>
                     <strong>{{ $genre->name }}</strong><br>
@@ -95,6 +96,16 @@
 
 
                 </button>
+                
+                </div>
+                {{--  Bouton cancel --}}
+                <div class="py-2 px-2 border border-grey-400 rounded-lg bg-green-600">
+                    <button  wire:click='cancelGenre'>
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-white">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18 18 6M6 6l12 12" />
+                        </svg>
+
+                    </button>
                 </div>
 
             @else
@@ -130,6 +141,7 @@
             </div>
         </li>
     @endforeach
+    {{ $genres->links() }}
 </ul>
             </div>
         </div>

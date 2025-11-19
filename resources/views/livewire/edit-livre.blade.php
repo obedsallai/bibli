@@ -117,7 +117,7 @@
         <div class="col-md-8">
             <div class="card shadow">
                 <div class="card-header bg-primary text-white text-center">
-                    <h4>Modifier : {{ $title }}</h4>
+                    <h4 class="text-2xl">Modifier : {{ $title }}</h4>
                 </div>
 
                 <div class="card-body">

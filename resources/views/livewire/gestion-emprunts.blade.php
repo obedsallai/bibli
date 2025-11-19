@@ -43,7 +43,7 @@
                             required wire:model.defer='bibliophile_id'>
                             <option value="">Bibliophile</option>
                             @foreach ($bibliophiles as $bibliophile)
-                                <option value="{{ $bibliophile->id }}">{{ $bibliophile->name }}</option>
+                                <option value="{{ $bibliophile->id }}"> <p class="text-xl">{{ $bibliophile->name }}</p> </option>
                             @endforeach
                         
 
@@ -118,7 +118,7 @@
                                         <small class="text-muted">{{ $borrowing->bibliophile->email }}</small>
                                     </div>
                                     <div class="text-end">
-                                        <span class=" badge text-black   rounded px-8 py-2">{{ $borrowing->book->title }}</span>
+                                        <span class=" badge text-black text-base  rounded px-8 py-2">{{ $borrowing->book->title }}</span>
                                     </div>
                                     <div class="text-end">
                                         @if($borrowing->returned)
@@ -158,9 +158,28 @@
                                                         </svg>
                                                     </div>
                                                 </button>  --}}
+
+                                                
+
+                                        
                                                 
                                             </div>
                                         @endif
+                                        @if ($borrowing->returned)
+
+                                                    <div class="flex items-center justify-between">
+                                                       
+                                                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="size-6 text-blue-800">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+                                                            </svg>
+
+                                                        
+                                                        <span class="text-grey-shade700"> {{ \Carbon\Carbon::parse($borrowing->return_date)->format('d F Y') }}</span>
+                                                        
+                                                    </div>
+                                                    
+                                                @endif
+
                                         
                                     </div>
 

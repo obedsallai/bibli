@@ -49,7 +49,11 @@
                                 </a>
                             </p>
                         </div>
+
                     </form>
+                    <div >
+                        <a href="{{ route('password.request') }}" class="text-blue-700"> Mot de passe oublie ?</a>
+                    </div>
                 </div>
             </div>
         </div>
