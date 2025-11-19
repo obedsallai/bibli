@@ -1,23 +1,21 @@
-@extends('layouts.app')
 
-@section('content')
+<div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
             <div class="card shadow-sm mt-5">
                 <div class="card-header bg-primary text-white text-center py-4">
-                    <h4 class="mb-0">{{ __('Connexion') }}</h4>
+                    <h4 class="mb-0 text-2xl font-bold">Connexion</h4>
                 </div>
 
                 <div class="card-body p-4 p-md-5">
-                    <form method="POST" action="{{ route('register') }}" novalidate>
-                        @csrf
+                    <form method="POST"  novalidate wire:submit="login">
 
                         <!--Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label">{{ __('Email') }}</label>
                             <input id="email" type="text" class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}" required autofocus autocomplete="email">
+                                   name="email" value="{{ old('email') }}" required autofocus autocomplete="email" wire:model.defer="email">
 
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -28,7 +26,7 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">{{ __('Mot de passe') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                                   name="password" required autocomplete="current-password">
+                                   name="password" required autocomplete="current-password" wire:model.defer="password">
 
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -57,4 +55,4 @@
         </div>
     </div>
 </div>
-@endsection
+</div>

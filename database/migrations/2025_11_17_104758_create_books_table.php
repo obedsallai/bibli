@@ -19,7 +19,7 @@ return new class extends Migration
             $table->foreignId('genre_id')->constrained('genres')->onDelete('cascade');
             $table->integer('available_copies')->default(1);
             $table->timestamp('publication_date')->nullable();
-            $table->enum('status', ['disponible', 'non disponible'])->default('disponible');
+            $table->string('status')->default('disponible');
             $table->timestamps();
         });
     }

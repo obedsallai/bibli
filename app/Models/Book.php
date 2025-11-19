@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+use App\Models\Genre;
 
 use Illuminate\Database\Eloquent\Model;
 
@@ -14,6 +15,15 @@ class Book extends Model
         'publication_date',
         'status',
     ];
+
+    protected $casts = [
+    'publication_date' => 'date:Y-m-d',     
+   
+];
+
+    public function genre(){
+        return $this->belongsTo(Genre::class);
+    }
 }
 
 

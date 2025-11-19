@@ -5,7 +5,7 @@ namespace App\Enums;
 enum BookStatus: string
 {
     case DISPONIBLE    = 'disponible';     // Disponible
-    case NON_DISPONIBLE     = 'non disponible';      // Emprunté
+    case NON_DISPONIBLE     = 'non_disponible';      // Emprunté
 
 
     // Optionnel : libellé lisible pour l’affichage
@@ -13,7 +13,7 @@ enum BookStatus: string
     {
         return match ($this) {
             self::DISPONIBLE   => 'Disponible',
-            self::NON_DISPONIBLE    => 'Non disponible',
+            self::NON_DISPONIBLE    => 'non_disponible',
 
         };
     }

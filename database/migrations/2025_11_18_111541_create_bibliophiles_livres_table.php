@@ -11,12 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('borrowings', function (Blueprint $table) {
+        Schema::create('bibliophiles_livres', function (Blueprint $table) {
             $table->id();
             $table->foreignId('bibliophile_id')->constrained('bibliophiles')->onDelete('cascade');
-            $table->foreignId('book_id')->constrained('books')->onDelete('cascade');
-            $table->timestamp('borrow_date')->useCurrent();
-            $table->timestamp('return_date')->nullable();
+            $table->foreignId('livre_id')->constrained('books')->onDelete('cascade');
             $table->boolean('returned')->default(false);
             $table->timestamps();
         });
@@ -27,6 +25,10 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('borrowings');
+        Schema::dropIfExists('bibliophiles_livres');
     }
 };
+
+
+
+

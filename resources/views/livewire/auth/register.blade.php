@@ -1,6 +1,4 @@
-@extends('layouts.app')
 
-@section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 col-lg-6">
@@ -10,14 +8,12 @@
                 </div>
 
                 <div class="card-body p-4 p-md-5">
-                    <form method="POST" action="{{ route('register') }}"  novalidate>
-                        @csrf
-
+                    <form method="POST" action="{{ route('register') }}"  novalidate wire:submit='register'>
                         <!-- Name -->
                         <div class="mb-3">
                             <label for="name" class="form-label">{{ __('Nom complet') }}</label>
                             <input id="name" type="text" class="form-control @error('name') is-invalid @enderror"
-                                   name="name" value="{{ old('name') }}" required autofocus autocomplete="name">
+                                   name="name" value="{{ old('name') }}" required autofocus autocomplete="name" wire:model.defer='name'>
 
                             @error('name')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -28,7 +24,7 @@
                         <div class="mb-3">
                             <label for="email" class="form-label">{{ __('Adresse e-mail') }}</label>
                             <input id="email" type="email" class="form-control @error('email') is-invalid @enderror"
-                                   name="email" value="{{ old('email') }}" required autocomplete="username">
+                                   name="email" value="{{ old('email') }}" required autocomplete="username" wire:model.defer='email'>
 
                             @error('email')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -39,7 +35,7 @@
                         <div class="mb-3">
                             <label for="phone_number" class="form-label">{{ __('Numéro de téléphone') }} <small class="text-muted">(facultatif)</small></label>
                             <input id="phone_number" type="tel" class="form-control @error('phone_number') is-invalid @enderror"
-                                   name="phone_number" value="{{ old('phone_number') }}" placeholder="+229 00 00 00 00">
+                                   name="phone_number" value="{{ old('phone_number') }}" placeholder="+229 00 00 00 00" wire:model.defer='phone_number'>
 
                             @error('phone_number')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -50,7 +46,7 @@
                         <div class="mb-3">
                             <label for="password" class="form-label">{{ __('Mot de passe') }}</label>
                             <input id="password" type="password" class="form-control @error('password') is-invalid @enderror"
-                                   name="password" required autocomplete="new-password">
+                                   name="password" required autocomplete="new-password" wire:model.defer='password'>
 
                             @error('password')
                                 <div class="invalid-feedback">{{ $message }}</div>
@@ -61,7 +57,7 @@
                         <div class="mb-4">
                             <label for="password_confirmation" class="form-label">{{ __('Confirmer le mot de passe') }}</label>
                             <input id="password_confirmation" type="password" class="form-control"
-                                   name="password_confirmation" required autocomplete="new-password">
+                                   name="password_confirmation" required autocomplete="new-password" wire:model.defer='password_confirmation'> 
                         </div>
 
                         <div class="d-grid">
@@ -84,4 +80,4 @@
         </div>
     </div>
 </div>
-@endsection
+
